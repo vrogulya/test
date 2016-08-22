@@ -14,9 +14,11 @@ import android.widget.EditText;
 
 public class DBActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnAdd, btnRead, btnClear;
-    EditText etName, etEmail;
-
+    Button btnAdd;
+    Button btnRead;
+    Button btnClear;
+    EditText etName;
+    EditText etEmail;
     DBHelper dbHelper;
 
     @Override
@@ -76,7 +78,6 @@ public class DBActivity extends AppCompatActivity implements View.OnClickListene
                 c.close();
                 break;
             case R.id.btnClear:
-                Log.d(LOG_TAG, "--- Clear mytable: ---");
                 int clearCount = db.delete("mytable", null, null);
                 Log.d(LOG_TAG, "deleted rows count = " + clearCount);
                 break;

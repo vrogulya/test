@@ -1,13 +1,13 @@
 package com.example.vrogulya.test;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class TwoActivity extends AppCompatActivity{
+public class TwoActivity extends AppCompatActivity {
     EditText et;
     Button btnEdir;
     int position;
@@ -24,7 +24,7 @@ public class TwoActivity extends AppCompatActivity{
         et.setText(name);
 
         btnEdir = (Button) findViewById(R.id.editButton);
-        btnEdir.setOnClickListener(new View.OnClickListener(){
+        btnEdir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
