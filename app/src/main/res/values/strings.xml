@@ -2,15 +2,15 @@
     <string name="app_name">Test</string>
     <string name="hello">Hello</string>
     <string-array name="names">
-        <item>name 1 </item>
-        <item>name 2 </item>
-        <item>name 3 </item>
-        <item>name 4 </item>
-        <item>name 5 </item>
-        <item>name 6 </item>
-        <item>name 7 </item>
-        <item>name 8 </item>
-        <item>name 9 </item>
+        <item> name 1 </item>
+        <item> name 2 </item>
+        <item> name 3 </item>
+        <item> name 4 </item>
+        <item> name 5 </item>
+        <item> name 6 </item>
+        <item> name 7 </item>
+        <item> name 8 </item>
+        <item> name 9 </item>
     </string-array>
 
 </resources>
