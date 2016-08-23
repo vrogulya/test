@@ -1,4 +1,4 @@
-package com.example.vrogulya.test;
+package com.example.vrogulya.test.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import com.example.vrogulya.test.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,8 +32,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ListView lvMain = (ListView) findViewById(R.id.listMain);
 
         adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                names);
+                android.R.layout.simple_list_item_1, names);
         lvMain.setAdapter(adapter);
         lvMain.setOnItemClickListener(this);
 
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
-        Intent intent = new Intent(this, TwoActivity.class);
+        Intent intent = new Intent(this, InfoActivity.class);
         intent.putExtra("name", names.get(pos));
         intent.putExtra("position", pos);
         startActivityForResult(intent, 1);
@@ -83,4 +84,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             adapter.notifyDataSetChanged();
         }
     }
+
+//    protected void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        outState.putInt(""+R.id.listMain, (Serializable)adapter.contacts());
+//
+//        outState.pu
+//    }
+//
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        cnt = savedInstanceState.getInt("count");
+//    }
 }

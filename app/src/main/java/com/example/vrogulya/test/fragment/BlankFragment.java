@@ -1,18 +1,27 @@
-package com.example.vrogulya.test;
+package com.example.vrogulya.test.fragment;
 
+
+import android.app.Fragment;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class DBActivity extends AppCompatActivity implements View.OnClickListener {
+import com.example.vrogulya.test.R;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class BlankFragment extends Fragment implements View.OnClickListener {
 
     Button btnAdd;
     Button btnRead;
@@ -20,28 +29,34 @@ public class DBActivity extends AppCompatActivity implements View.OnClickListene
     EditText etName;
     EditText etEmail;
     DBHelper dbHelper;
+    final String LOG_TAG = "LOG_TAG";
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_db);
-
-        btnAdd = (Button) findViewById(R.id.btnAdd);
-        btnAdd.setOnClickListener(this);
-
-        btnRead = (Button) findViewById(R.id.btnRead);
-        btnRead.setOnClickListener(this);
-
-        btnClear = (Button) findViewById(R.id.btnClear);
-        btnClear.setOnClickListener(this);
-
-        etName = (EditText) findViewById(R.id.etName);
-        etEmail = (EditText) findViewById(R.id.etEmail);
-
-        dbHelper = new DBHelper(this);
+    public BlankFragment() {
+        // Required empty public constructor
     }
 
-    final String LOG_TAG = "LOG_TAG";
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_blank, container, false);
+
+        btnAdd = (Button) view.findViewById(R.id.btnAdd);
+        btnAdd.setOnClickListener(this);
+
+        btnRead = (Button) view.findViewById(R.id.btnRead);
+        btnRead.setOnClickListener(this);
+
+        btnClear = (Button) view.findViewById(R.id.btnClear);
+        btnClear.setOnClickListener(this);
+
+        etName = (EditText) view.findViewById(R.id.etName);
+        etEmail = (EditText) view.findViewById(R.id.etEmail);
+
+        dbHelper = new DBHelper(getActivity().getApplicationContext());
+
+        return view;
+    }
 
     @Override
     public void onClick(View view) {
@@ -85,7 +100,6 @@ public class DBActivity extends AppCompatActivity implements View.OnClickListene
         dbHelper.close();
     }
 
-
     class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
@@ -105,4 +119,5 @@ public class DBActivity extends AppCompatActivity implements View.OnClickListene
 
         }
     }
+
 }

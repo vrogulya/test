@@ -4,11 +4,19 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#388e7b"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <fragment
         android:id="@+id/add_fragment"
         android:name="com.example.vrogulya.test.fragment.BlankFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_blank" />
+
+    <fragment
+        android:id="@+id/list_fragment"
+        android:name="com.example.vrogulya.test.fragment.BlankFragment2"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -19,15 +27,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1">
-
-    <fragment
-            android:id="@+id/list_fragment"
-            android:name="com.example.vrogulya.test.fragment.BlankFragment2"
-            android:layout_width="fill_parent"
-            android:layout_height="353dp"
-            tools:layout="@layout/fragment_blank"
-            android:layout_gravity="center_horizontal|top" />
     </FrameLayout>
-
 </LinearLayout>
 
