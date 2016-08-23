@@ -1,8 +1,9 @@
 package com.example.vrogulya.test.activity;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,11 +12,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.vrogulya.test.R;
+import com.example.vrogulya.test.fragment.InfoFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class MainActivity extends FragmentActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
 
 
     String[] namesArray;
@@ -41,6 +43,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Button btnDb = (Button) findViewById(R.id.btndb);
         btnDb.setOnClickListener(this);
 
+        InfoFragment infoFragment = new InfoFragment();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.fragment_container, infoFragment)
+                .commit();
     }
 
     @Override
