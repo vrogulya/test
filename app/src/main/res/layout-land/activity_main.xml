@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    tools:context="com.rogulya.rumpup.MainActivity">
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="272dp"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/buttonMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add name" />
-
-    <ListView
-        android:id="@+id/listMain"
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.rogulya.rumpup.BlankFragment"
         android:layout_width="match_parent"
-        android:layout_height="200dp"></ListView>
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_blank" />
 
-    <Button
-        android:id="@+id/btndb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="DB" />
-
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/fragment_container"
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.rogulya.rumpup.BlankFragment2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_blank_2" />
+
+    <!--<FrameLayout-->
+        <!--android:id="@+id/container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"></FrameLayout>-->
+
+    <!--<FrameLayout-->
+        <!--android:id="@+id/container2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"></FrameLayout>-->
+
 
 </LinearLayout>
