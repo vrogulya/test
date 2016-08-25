@@ -7,4 +7,12 @@
     android:orientation="vertical"
     tools:context="com.rogulya.rumpup.MainActivity">
 
+    <fragment
+        android:id="@+id/listFragmen"
+        android:name="com.rogulya.rumpup.BlankFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@android:layout/list_content">
+    </fragment>
+
 </LinearLayout>

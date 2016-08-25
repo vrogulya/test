@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 public class DBActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String TABLE_NAMES = "Names";
+    public static final String TABLE_NAMES = "mytable";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NAME = "name";
 
@@ -29,7 +29,7 @@ public class DBActivity extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_db);
+        setContentView(R.layout.act_db);
 
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(this);

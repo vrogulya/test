@@ -2,6 +2,7 @@ package com.rogulya.rumpup;
 
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,7 +25,7 @@ public class BlankFragment2 extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_blank_2, container, false);
+        View view = inflater.inflate(R.layout.frg_blank_2, container, false);
         mTextView = (TextView) view.findViewById(R.id.text1);
 
         Bundle args = getArguments();
@@ -42,6 +43,17 @@ public class BlankFragment2 extends Fragment{
             }
         });
 
+        Button btnDialog = (Button) view.findViewById(R.id.btnDialog);
+		btnDialog.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+				FragmentManager manager = getFragmentManager();
+				FirstDialogFragment fdf = new FirstDialogFragment();
+				fdf.show(manager, "dialog");
+			}
+		});
+
         return view;
     }
 
@@ -52,6 +64,6 @@ public class BlankFragment2 extends Fragment{
     }
 
     public void setDescription(int itemIndex) {
-        mTextView.setText(BlankFragment.FRUITS[itemIndex]);
+        mTextView.setText(new BlankFragment().names.get(itemIndex));
     }
 }

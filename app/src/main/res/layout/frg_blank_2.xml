@@ -1,8 +1,9 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_green_light"
+              android:orientation="vertical"
     tools:context="com.rogulya.rumpup.BlankFragment2">
 
     <TextView
@@ -13,10 +14,17 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="to BD"
         android:id="@+id/btnBD"
+        android:layout_weight="2"
         android:layout_gravity="center" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Dialog"
+        android:layout_weight="2"
+        android:id="@+id/btnDialog"
+        />
 
-
-</FrameLayout>
+</LinearLayout>
