@@ -21,15 +21,32 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class BlankFragment extends ListFragment implements AdapterView.OnItemClickListener {
-	List<String> names = new ArrayList<>(Arrays.asList("Apple", "Avocado", "Banana",
+	private List<String> mNames = new ArrayList<>(Arrays.asList("Apple", "Avocado", "Banana",
 			"Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
 			"Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple"));
-	ArrayAdapter<String> adapter;
+
+	private ArrayAdapter<String> mAdapter;
+
+
 
 	public BlankFragment() {
-		// Required empty public constructor
 	}
 
+	public List<String> getmNames() {
+		return mNames;
+	}
+
+	public void addTomNames(String name) {
+		this.mNames.add(name);
+	}
+
+	public ArrayAdapter<String> getAdapter() {
+		return mAdapter;
+	}
+
+	public void setAdapter(ArrayAdapter<String> mAdapter) {
+		this.mAdapter = mAdapter;
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,8 +75,8 @@ public class BlankFragment extends ListFragment implements AdapterView.OnItemCli
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_activated_1, names);
-		setListAdapter(adapter);
+		mAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_activated_1, mNames);
+		setListAdapter(mAdapter);
 	}
 
 	@Override
@@ -72,7 +89,7 @@ public class BlankFragment extends ListFragment implements AdapterView.OnItemCli
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 
-		Toast.makeText(getActivity(), "Вы выбрали позицию: " + position, Toast.LENGTH_SHORT).show();
+		Toast.makeText(getActivity(), "Selected: " + position, Toast.LENGTH_SHORT).show();
 		OnListItemSelectedListener listener = (OnListItemSelectedListener) getActivity();
 		listener.onListItemSelected(position);
 	}

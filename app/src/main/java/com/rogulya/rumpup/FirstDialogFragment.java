@@ -15,6 +15,8 @@ import android.widget.Toast;
 public class FirstDialogFragment extends DialogFragment {
 
 	public static final String PARAM_PINTENT = "pintent";
+	public static final String NAMES = "names";
+
 
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -54,7 +56,8 @@ public class FirstDialogFragment extends DialogFragment {
 								PendingIntent pi;
 								Intent intent;
 								pi = getActivity().createPendingResult(123, new Intent(), 0);
-								intent = new Intent(new Intent(getActivity(), MyService.class).putExtra("names", state.toString())
+								intent = new Intent(new Intent(getActivity(), MyService.class)
+										.putExtra(NAMES, state.toString())
 										.putExtra(PARAM_PINTENT, pi));
 								getActivity().startService(intent);
 

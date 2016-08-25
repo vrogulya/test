@@ -64,6 +64,6 @@ public class BlankFragment2 extends Fragment{
     }
 
     public void setDescription(int itemIndex) {
-        mTextView.setText(new BlankFragment().names.get(itemIndex));
+        mTextView.setText(new BlankFragment().getmNames().get(itemIndex));
     }
 }
