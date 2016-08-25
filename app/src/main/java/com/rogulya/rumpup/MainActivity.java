@@ -5,13 +5,13 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements BlankFragment.OnListItemSelectedListener {
 
     private boolean mIsDynamic;
     FragmentManager fragmentManager = getFragmentManager();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,27 +60,12 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnL
 
         Toast.makeText(this, data.toString(), Toast.LENGTH_LONG).show();
 
-//        if(resultCode==42){
-//
-//            String[] names = {"123", "123"};
-//            ArrayAdapter<String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, names);
-//            adapter.notifyDataSetChanged();
-//        }
+        BlankFragment fragment = (BlankFragment) fragmentManager
+                .findFragmentById(R.id.listFragment);
+        fragment.adapter.add("UPDATED");
 
-        FragmentManager fManager = getFragmentManager();
-        BlankFragment frag = (BlankFragment) fManager.findFragmentById(R.id.listFragmen);
-        if (frag != null) {
-            frag.adapter.add("asdasdasdasd");
-        }else{
-            BlankFragment b = new BlankFragment();
-            b.names.add("asdasd");
-            b.adapter = new ArrayAdapter<>(this,
-				android.R.layout.simple_list_item_1, b.names);
-            b.adapter.notifyDataSetChanged();
-        }
-        System.out.println(frag);
-//        frag.adapter.notifyDataSetChanged();
 
+        System.out.println(fragment + "...............................");
     }
 
 }
