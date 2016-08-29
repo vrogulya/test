@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,14 +20,14 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlankFragment extends ListFragment  {
+public class NamesListFragment extends ListFragment  {
 	private static List<String> mNames = new ArrayList<>(Arrays.asList("Apple", "Avocado", "Banana",
 			"Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
 			"Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple"));
 
 	private ArrayAdapter<String> mAdapter;
 
-	public BlankFragment() {
+	public NamesListFragment() {
 	}
 
 	public List<String> getmNames() {
@@ -61,7 +60,7 @@ public class BlankFragment extends ListFragment  {
 			public void onClick(View view) {
 
 				FragmentManager manager = getFragmentManager();
-				FirstDialogFragment fdf = new FirstDialogFragment();
+				ChackDialogFragment fdf = new ChackDialogFragment();
 				fdf.show(manager, "dialog");
 			}
 		});
@@ -80,7 +79,6 @@ public class BlankFragment extends ListFragment  {
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 
-		Toast.makeText(getActivity(), "Selected: " + position, Toast.LENGTH_SHORT).show();
 		OnListItemSelectedListener listener = (OnListItemSelectedListener) getActivity();
 		listener.onListItemSelected(position);
 	}

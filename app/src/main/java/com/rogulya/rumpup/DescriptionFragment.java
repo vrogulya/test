@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class BlankFragment2 extends Fragment {
+public class DescriptionFragment extends Fragment {
 	public static final String ITEM_INDEX = "item_index";
 	private TextView mTextView;
 	private int mItemIndex;
 
-	public BlankFragment2() {
+	public DescriptionFragment() {
 	}
 
 	@Override
@@ -42,6 +42,6 @@ public class BlankFragment2 extends Fragment {
 	}
 
 	public void setDescription(int itemIndex) {
-		mTextView.setText(new BlankFragment().getmNames().get(itemIndex));
+		mTextView.setText(new NamesListFragment().getmNames().get(itemIndex));
 	}
 }

@@ -3,8 +3,10 @@ package com.rogulya.rumpup;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.Environment;
 import android.os.IBinder;
+import android.util.Log;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,11 +14,12 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.concurrent.TimeUnit;
 
 public class MyService extends Service {
     public static final int RESULT_CODE = 42;
     private static final String FILENAME = "file.txt";
-
+    MyBinder binder = new MyBinder();
     public MyService() {
     }
 
@@ -25,12 +28,17 @@ public class MyService extends Service {
 
         new Thread(new Runnable() {
             public void run() {
-                String names = intent.getStringExtra(FirstDialogFragment.NAMES);
+                try {
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                String names = intent.getStringExtra(ChackDialogFragment.NAMES);
 
                 writeFileToMemory(names);
                 writeFileToSDCard(names);
 
-                PendingIntent pi = intent.getParcelableExtra(FirstDialogFragment.PARAM_PINTENT);
+                PendingIntent pi = intent.getParcelableExtra(ChackDialogFragment.PARAM_PINTENT);
                 try {
                     pi.send(RESULT_CODE);
                 } catch (PendingIntent.CanceledException e) {
@@ -44,11 +52,28 @@ public class MyService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        return binder;
     }
 
-    private void writeFileToMemory(String names) {
+    class MyBinder extends Binder {
+        MyService getService() {
+            return MyService.this;
+        }
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.d("aaa", "created service");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("aaa", "destroyed service");
+    }
+
+    public void writeFileToMemory(String names) {
         try {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
                     openFileOutput(FILENAME, MODE_PRIVATE)));

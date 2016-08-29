@@ -7,12 +7,11 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 /**
  * Created by vrogulya on 25.08.2016.
  */
-public class FirstDialogFragment extends DialogFragment {
+public class ChackDialogFragment extends DialogFragment {
 
 	public static final String PARAM_PINTENT = "pintent";
 	public static final String NAMES = "names";
@@ -47,16 +46,12 @@ public class FirstDialogFragment extends DialogFragment {
 									else
 										state.append(" not selected\n");
 								}
-								Toast.makeText(getActivity(),
-										state.toString(), Toast.LENGTH_LONG)
-										.show();
 
-								PendingIntent pi;
-								Intent intent;
-								pi = getActivity().createPendingResult(123, new Intent(), 0);
-								intent = new Intent(new Intent(getActivity(), MyService.class)
+
+								PendingIntent pi = getActivity().createPendingResult(123, new Intent(), 0);
+								Intent intent = new Intent(getActivity(), MyService.class)
 										.putExtra(NAMES, state.toString())
-										.putExtra(PARAM_PINTENT, pi));
+										.putExtra(PARAM_PINTENT, pi);
 								getActivity().startService(intent);
 
 							}
