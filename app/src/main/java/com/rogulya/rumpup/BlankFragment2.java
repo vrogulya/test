@@ -2,13 +2,10 @@ package com.rogulya.rumpup;
 
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -34,25 +31,14 @@ public class BlankFragment2 extends Fragment{
             setDescription(mItemIndex);
         }
 
-        Button btnBD = (Button) view.findViewById(R.id.btnBD);
-        btnBD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), DBActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button btnDialog = (Button) view.findViewById(R.id.btnDialog);
-		btnDialog.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-
-				FragmentManager manager = getFragmentManager();
-				FirstDialogFragment fdf = new FirstDialogFragment();
-				fdf.show(manager, "dialog");
-			}
-		});
+//        Button btnBD = (Button) view.findViewById(R.id.btnBD);
+//        btnBD.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(view.getContext(), DBActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         return view;
     }

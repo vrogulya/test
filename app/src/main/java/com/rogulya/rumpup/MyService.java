@@ -38,6 +38,7 @@ public class MyService extends Service {
                 }
             }
         }).start();
+        stopSelf();
         return super.onStartCommand(intent, flags, startId);
     }
 

@@ -5,15 +5,19 @@
     android:layout_height="fill_parent"
     android:orientation="horizontal"
     tools:context="com.rogulya.rumpup.MainActivity">
-
-    <fragment
-        android:id="@+id/listFragment"
-        android:name="com.rogulya.rumpup.BlankFragment"
+    <FrameLayout
+        android:id="@+id/container23"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        tools:layout="@android:layout/list_content">
-    </fragment>
+        android:layout_weight="1"></FrameLayout>
+    <!--<fragment-->
+        <!--android:id="@+id/listFragment"-->
+        <!--android:name="com.rogulya.rumpup.BlankFragment"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--tools:layout="@android:layout/list_content">-->
+    <!--</fragment>-->
 
     <fragment
         android:id="@+id/secondFragment"
@@ -22,6 +26,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         tools:layout="@layout/frg_blank_2" />
+
+
 
     <!--<FrameLayout-->
         <!--android:id="@+id/container"-->
