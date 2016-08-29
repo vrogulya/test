@@ -28,8 +28,6 @@ public class BlankFragment extends ListFragment  {
 
 	private ArrayAdapter<String> mAdapter;
 
-
-
 	public BlankFragment() {
 	}
 

@@ -51,8 +51,6 @@ public class FirstDialogFragment extends DialogFragment {
 										state.toString(), Toast.LENGTH_LONG)
 										.show();
 
-//
-
 								PendingIntent pi;
 								Intent intent;
 								pi = getActivity().createPendingResult(123, new Intent(), 0);
