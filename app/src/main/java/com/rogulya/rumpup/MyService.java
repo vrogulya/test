@@ -1,6 +1,5 @@
 package com.rogulya.rumpup;
 
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
@@ -14,51 +13,63 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.concurrent.TimeUnit;
 
 public class MyService extends Service {
+
     public static final int RESULT_CODE = 42;
     private static final String FILENAME = "file.txt";
-    MyBinder binder = new MyBinder();
+
+    private MyBinder binder = new MyBinder();
+
     public MyService() {
     }
 
-    @Override
-    public int onStartCommand(final Intent intent, int flags, int startId) {
 
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    TimeUnit.SECONDS.sleep(3);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                String names = intent.getStringExtra(ChackDialogFragment.NAMES);
 
-                writeFileToMemory(names);
-                writeFileToSDCard(names);
-
-                PendingIntent pi = intent.getParcelableExtra(ChackDialogFragment.PARAM_PINTENT);
-                try {
-                    pi.send(RESULT_CODE);
-                } catch (PendingIntent.CanceledException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-        stopSelf();
-        return super.onStartCommand(intent, flags, startId);
-    }
+//    @Override
+//    public int onStartCommand(final Intent intent, int flags, int startId) {
+//
+//        new Thread(new Runnable() {
+//            public void run() {
+//                try {
+//                    TimeUnit.SECONDS.sleep(3);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                String names = intent.getStringExtra(ChackDialogFragment.NAMES);
+//
+//                writeFileToMemory(names);
+//                writeFileToSDCard(names);
+//
+//                PendingIntent pi = intent.getParcelableExtra(ChackDialogFragment.PARAM_PINTENT);
+//                try {
+//                    pi.send(RESULT_CODE);
+//                } catch (PendingIntent.CanceledException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).start();
+//        stopSelf();
+//        return super.onStartCommand(intent, flags, startId);
+//    }
 
     @Override
     public IBinder onBind(Intent intent) {
+
+        Log.d("aaa", "MyService onBind");
         return binder;
     }
 
-    class MyBinder extends Binder {
-        MyService getService() {
-            return MyService.this;
-        }
+
+
+
+    public void onRebind() {
+               Log.d("aaa", "MyService onRebind");
+    }
+
+    public boolean onUnbind(Intent intent) {
+        Log.d("aaa", "MyService onUnbind");
+        return super.onUnbind(intent);
     }
 
     @Override
@@ -86,7 +97,7 @@ public class MyService extends Service {
         }
     }
 
-    private void writeFileToSDCard(String names){
+    public void writeFileToSDCard(String names){
         if (!Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED)) {
             return;
@@ -101,6 +112,14 @@ public class MyService extends Service {
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+
+
+    class MyBinder extends Binder {
+        MyService getService() {
+            return MyService.this;
         }
     }
 }
